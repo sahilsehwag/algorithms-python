@@ -24,7 +24,21 @@ def binarySearch(array, value):
     return -1
 
 
-def interpolationSearch(array, value): pass
+def interpolationSearch(array, value): 
+    low = 0
+    high = len(array) - 1
+
+    while True:
+        pos = math.floor(low + (((high - low)/(array[high] - array[low])) * (value - array[low])))
+        if array[pos] == value: 
+            return pos
+        elif array[pos] < value: 
+            low = pos + 1
+        elif value < array[pos]: 
+            high = pos - 1
+        elif low == high:
+            return -1
+    return -1
 
 
 def gallopingSearch(array, value): pass
