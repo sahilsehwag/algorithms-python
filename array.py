@@ -45,17 +45,18 @@ def gallopingSearch(array, value):
     left = 0
     right = len(array) - 1
 
-    if value < array[left] or value > array[right]: return -1
-
     step = 1
 
-    while left <= right and array[left] < value:
-        left += step
-        step *= 2
-
-    if left <= right:
-        right = left
-    left /= 2
+    while True:
+        if array[left] < value:
+            if left > right: break
+            left += step
+            step *= 2
+        else: 
+            if left <= right:
+                right = left
+                left = left / 2
+                break
 
     while True:
         mid = math.floor((left + right)/2)
@@ -93,6 +94,7 @@ def jumpSearch(array, value):
         if array[i] ==  value: 
             return i
     return -1
+
 def ternarySearch(array, value):
     left = 0
     right = len(array) - 1
@@ -112,6 +114,9 @@ def ternarySearch(array, value):
         elif array[mid2] < value:
             left = mid2 + 1
     return -1
+
+def fibonacciSeach(array, value):
+    pass
 #SEARCHING ALGORITHMS
 
 
