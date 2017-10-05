@@ -3,19 +3,19 @@ import math
 
 
 def binarySearch(array, value): 
-    left = 0
-    right = len(array)
+    low = 0
+    high = len(array)
 
     while True:
-        mid = math.floor((left + right)/2)
+        mid = math.floor((low + high)/2)
 
         if array[mid] == value: 
             return mid
         elif array[mid] < value: 
-            left = mid
+            low = mid + 1
         elif value < array[mid]: 
-            right = mid
-        else:
+            high = mid - 1
+        elif low == high:
             return -1
     return -1
 
