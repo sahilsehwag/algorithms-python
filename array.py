@@ -1,6 +1,7 @@
 import math
 
 
+
 #SEARCHING ALGORITHMS
 def linearSearch(array, value):
     for i,element in enumerate(array):
@@ -41,7 +42,33 @@ def interpolationSearch(array, value):
     return -1
 
 def gallopingSearch(array, value): 
-    pass
+    left = 0
+    right = len(array) - 1
+
+    if value < array[left] or value > array[right]: return -1
+
+    step = 1
+
+    while left <= right and array[left] < value:
+        left += step
+        step *= 2
+
+    if left <= right:
+        right = left
+    left /= 2
+
+    while True:
+        mid = math.floor((left + right)/2)
+
+        if array[mid] == value: 
+            return mid
+        elif array[mid] < value: 
+            left = mid + 1
+        elif value < array[mid]: 
+            right = mid - 1
+        elif left == right:
+            return -1
+    return -1
 
 def jumpSearch(array, value):
     step = math.floor(math.sqrt(len(array)))
@@ -66,31 +93,45 @@ def jumpSearch(array, value):
         if array[i] ==  value: 
             return i
     return -1
+def ternarySearch(array, value):
+    left = 0
+    right = len(array) - 1
+
+    while left <= right:
+        mid1 = round(left + (right - left) / 3)
+        mid2 = round(mid1 + (right - left) / 3)
+
+        if array[mid1] == value: return mid1
+        if array[mid2] == value: return mid2
+
+        if value < array[mid1]:
+            right = mid1 - 1
+        elif array[mid1] < value < array[mid2]:
+            left = mid1 + 1
+            right = mid2 - 1
+        elif array[mid2] < value:
+            left = mid2 + 1
+    return -1
+#SEARCHING ALGORITHMS
+
 
 
 #SORTING ALGORITHMS
 def insertionSort(array): pass
 
-
 def selectionSort(array): pass
-
 
 def bubbleSort(array): pass
 
-
 def shellSort(array): pass
-
 
 def mergeSort(array): pass
 
-
 def quickSort(array): pass
-
 
 def countingSort(array): pass
 
-
 def radixSort(array): pass
 
-
 def heapSort(array): pass
+#SORTING ALGORITHMS
