@@ -1,49 +1,74 @@
 import math
 
 
+#SEARCHING ALGORITHMS
 def linearSearch(array, value):
     for i,element in enumerate(array):
         if element is value:
             return i
 
 def binarySearch(array, value): 
-    low = 0
-    high = len(array)
+    left = 0
+    right = len(array)
 
     while True:
-        mid = math.floor((low + high)/2)
+        mid = math.floor((left + right)/2)
 
         if array[mid] == value: 
             return mid
         elif array[mid] < value: 
-            low = mid + 1
+            left = mid + 1
         elif value < array[mid]: 
-            high = mid - 1
-        elif low == high:
+            right = mid - 1
+        elif left == right:
             return -1
     return -1
 
-
 def interpolationSearch(array, value): 
-    low = 0
-    high = len(array) - 1
+    left = 0
+    right = len(array) - 1
 
     while True:
-        pos = math.floor(low + (((high - low)/(array[high] - array[low])) * (value - array[low])))
+        pos = math.floor(left + (((right - left)/(array[right] - array[left])) * (value - array[left])))
         if array[pos] == value: 
             return pos
         elif array[pos] < value: 
-            low = pos + 1
+            left = pos + 1
         elif value < array[pos]: 
-            high = pos - 1
-        elif low == high:
+            right = pos - 1
+        elif left == right:
             return -1
     return -1
 
+def gallopingSearch(array, value): 
+    pass
 
-def gallopingSearch(array, value): pass
+def jumpSearch(array, value):
+    step = math.floor(math.sqrt(len(array)))
+    left = 0
+    right = step
+
+    while True:
+        if right >= len(array):
+            right = len(array) - 1
+
+        if array[right] < value:
+            if right == len(array) - 1: return -1
+            else:
+                left = right + 1
+                right += (step + 1)
+        elif array[right] > value:
+            break
+        elif array[right] == value:
+            return right
+
+    for i in range(left, right + 1):
+        if array[i] ==  value: 
+            return i
+    return -1
 
 
+#SORTING ALGORITHMS
 def insertionSort(array): pass
 
 
