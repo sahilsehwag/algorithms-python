@@ -1,6 +1,10 @@
 import math
 
 
+def linearSearch(array, value):
+    for i,element in enumerate(array):
+        if element is value:
+            return i
 
 def binarySearch(array, value): 
     low = 0
