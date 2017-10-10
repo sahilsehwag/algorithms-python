@@ -1,4 +1,5 @@
 import math
+import sys
 
 
 
@@ -136,7 +137,20 @@ def insertionSort(array):
                     array[j], array[j-1] = array[j-1], array[j]
 
 
-def selectionSort(array): pass
+def selectionSort(array): 
+    i = 0
+
+    while i < len(array):
+        min = array[i]
+        minIndex = i
+
+        for j in range(i, len(array)):
+            if array[j] < min:
+                min = array[j]
+                minIndex = j
+
+        array[minIndex], array[i] = array[i], array[minIndex]
+        i += 1
 
 
 def bubbleSort(array): 
