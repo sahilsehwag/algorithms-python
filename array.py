@@ -122,7 +122,12 @@ def fibonacciSeach(array, value):
 
 
 #SORTING ALGORITHMS
-def insertionSort(array): pass
+def insertionSort(array): 
+    for i in range(1, len(array)):
+        if array[i] < array[i-1]:
+            for j in range(i, 0, -1):
+                if array[j-1] > array[j]:
+                    array[j], array[j-1] = array[j-1], array[j]
 
 def selectionSort(array): pass
 
