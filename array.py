@@ -183,7 +183,23 @@ def mergeSort(array): pass
 
 def quickSort(array): pass
 
-def countingSort(array): pass
+def countingSort(array): 
+    counts = [0] * (max(array)+1)
+
+    for e in array:
+        counts[e] += 1
+
+    for i in range(1, len(counts)):
+        counts[i] += counts[i-1]
+
+    sortedArray = [None] * len(array)
+    for e in array:
+        if counts[e] > 0:
+            sortedArray[counts[e]-1] = e
+            counts[e] -= 1
+
+    return sortedArray
+
 
 def radixSort(array): pass
 
