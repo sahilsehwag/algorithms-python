@@ -8,6 +8,7 @@ def linearSearch(array, value):
         if element is value:
             return i
 
+
 def binarySearch(array, value): 
     left = 0
     right = len(array)
@@ -25,6 +26,7 @@ def binarySearch(array, value):
             return -1
     return -1
 
+
 def interpolationSearch(array, value): 
     left = 0
     right = len(array) - 1
@@ -40,6 +42,7 @@ def interpolationSearch(array, value):
         elif left == right:
             return -1
     return -1
+
 
 def gallopingSearch(array, value): 
     left = 0
@@ -71,6 +74,7 @@ def gallopingSearch(array, value):
             return -1
     return -1
 
+
 def jumpSearch(array, value):
     step = math.floor(math.sqrt(len(array)))
     left = 0
@@ -95,6 +99,7 @@ def jumpSearch(array, value):
             return i
     return -1
 
+
 def ternarySearch(array, value):
     left = 0
     right = len(array) - 1
@@ -115,6 +120,7 @@ def ternarySearch(array, value):
             left = mid2 + 1
     return -1
 
+
 def fibonacciSeach(array, value):
     pass
 #SEARCHING ALGORITHMS
@@ -129,9 +135,18 @@ def insertionSort(array):
                 if array[j-1] > array[j]:
                     array[j], array[j-1] = array[j-1], array[j]
 
+
 def selectionSort(array): pass
 
-def bubbleSort(array): pass
+
+def bubbleSort(array): 
+    i = len(array)
+    while i > 0:
+        for j in range(i-1):
+            if array[j] > array[j+1]:
+                array[j], array[j+1] = array[j+1], array[j]
+        i -= 1
+
 
 def shellSort(array): pass
 
