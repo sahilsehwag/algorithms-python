@@ -133,7 +133,9 @@ def insertionSort(array):
     for i in range(1, len(array)):
         if array[i] < array[i-1]:
             for j in range(i, 0, -1):
-                if array[j-1] > array[j]:
+                if array[j-1] <= array[j]:
+                    break
+                else:
                     array[j], array[j-1] = array[j-1], array[j]
 
 
@@ -162,7 +164,20 @@ def bubbleSort(array):
         i -= 1
 
 
-def shellSort(array): pass
+def shellSort(array): 
+    k = math.floor(len(array) / 2)
+
+    while k > 0:
+        for i in range(0, len(array) - k):
+            if array[i] > array[i+k]:
+                for j in range(i, -1, -k):
+                    if array[j] <= array[j+k]:
+                        break
+                    else:
+                        array[j], array[j+k] = array[j+k], array[j]
+            
+        k = math.floor(k/2)
+
 
 def mergeSort(array): pass
 
