@@ -1,4 +1,5 @@
 import math
+import pprint
 import sys
 
 
@@ -179,7 +180,24 @@ def shellSort(array):
         k = math.floor(k/2)
 
 
-def mergeSort(array): pass
+# def mergeSort(array): 
+    # def merge(array, left, right):
+        # result = []
+
+        # l = 0
+        # for i in range(len(left) + len(right)):
+
+
+    # def partition(array, left, mid, right):
+        # mid = math.floor(len(array))
+        # if left >= right:
+            # return
+        # return partition(array, left, mid)
+        # return partition(array, mid+1, right)
+
+    # partition(array, left, right)
+
+
 
 def quickSort(array): pass
 
@@ -201,7 +219,28 @@ def countingSort(array):
     return sortedArray
 
 
-def radixSort(array): pass
+def radixSort(array): 
+    if len(array) == 0: return array
+
+    maxValue = max(array)
+    k = 10
+    m = 1
+
+    while maxValue % k // m != 0 or maxValue // k != 0:
+        digits = [[] for _ in range(10)]
+        for e in array:
+            digits[e % k // m].append(e)
+
+        array = []
+        for es in digits:
+            for e in es:
+                array.append(e)
+
+        m *= 10
+        k *= 10
+
+    return array
+
 
 def heapSort(array): pass
 #SORTING ALGORITHMS
