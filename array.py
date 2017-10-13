@@ -217,7 +217,42 @@ def mergeSort(array):
 
 
 def quickSort(array): 
-    pass
+    def partition(array, left, pivot, right):
+        hole = pivot
+        pivot = array[pivot]
+        array[hole] = None
+
+        while True:
+            if left < hole:
+                if array[left] > pivot:
+                    array[left], array[hole] = array[hole], array[left]
+                    hole = left
+                    right -= 1
+                else:
+                    left += 1
+            elif hole < right:
+                if array[right] <= pivot:
+                    array[right], array[hole] = array[hole], array[right]
+                    hole = right
+                    left += 1
+                else:
+                    right -= 1
+            elif left >= right:
+                array[hole] = pivot
+                return hole
+
+    def quicksort(array, left, right):
+        if left >= right: return
+        pivot = right
+
+        pivot = partition(array, left, pivot, right)
+
+        quicksort(array, left, pivot-1)
+        quicksort(array, pivot+1, right)
+
+    if len(array) > 0:
+        quicksort(array, 0, len(array) - 1)
+
 
 def countingSort(array): 
     counts = [0] * (max(array)+1)
