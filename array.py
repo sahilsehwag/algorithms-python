@@ -1,5 +1,4 @@
 import math
-import pprint
 import sys
 
 
@@ -180,26 +179,45 @@ def shellSort(array):
         k = math.floor(k/2)
 
 
-# def mergeSort(array): 
-    # def merge(array, left, right):
-        # result = []
+def mergeSort(array): 
+    def merge(array, left, mid, right):
+        i = left
+        j = mid + 1
+        merged = []
 
-        # l = 0
-        # for i in range(len(left) + len(right)):
+        while True:
+            if i <= mid and j <= right:
+                if array[i] <= array[j]:
+                    merged.append(array[i])
+                    i += 1
+                elif array[i] > array[j]:
+                    merged.append(array[j])
+                    j += 1
+            elif i <= mid and j > right:
+                merged.append(array[i])
+                i += 1
+            elif i > mid and j <= right:
+                merged.append(array[j])
+                j += 1
+            else:
+                array[left:right+1] = merged
+                return
+
+    def mergesort(array, left, right):
+        if left == right: return
+
+        mid = math.floor((left + right) / 2)
+        mergesort(array, left, mid)
+        mergesort(array, mid+1, right)
+
+        merge(array, left, mid, right)
+
+    if len(array) > 0:
+        mergesort(array, 0, len(array) - 1)
 
 
-    # def partition(array, left, mid, right):
-        # mid = math.floor(len(array))
-        # if left >= right:
-            # return
-        # return partition(array, left, mid)
-        # return partition(array, mid+1, right)
-
-    # partition(array, left, right)
-
-
-
-def quickSort(array): pass
+def quickSort(array): 
+    pass
 
 def countingSort(array): 
     counts = [0] * (max(array)+1)
