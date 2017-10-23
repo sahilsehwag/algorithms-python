@@ -295,5 +295,6 @@ def radixSort(array):
     return array
 
 
-def heapSort(array): pass
+def heapSort(array): 
+    pass
 #SORTING ALGORITHMS
